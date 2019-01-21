@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import App from '../App';
 import Header from '../Header';
-import List from '../List';
+import List from '../../containers/List';
 
 let wrapped;
 
