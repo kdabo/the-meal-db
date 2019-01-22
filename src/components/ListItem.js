@@ -71,7 +71,7 @@ class ListItem extends Component {
         const { item, modalIsOpen } = this.state;
 
         return (
-            <div className='column meal'>
+            <li aria-label='list item' className='column meal'>
                 <div className='ui card'>
                     <Image image={image} />
                     <div className='content'>
@@ -80,14 +80,14 @@ class ListItem extends Component {
                             { category || item.strCategory }
                             {' '}
                         </div>
-                        <div className='margin-top'>
+                        <div>
                             <button
                                 type='button'
                                 name={id}
                                 className='ui left basic floated secondary button'
                                 onClick={this.openModal}
                             >
-                                View more
+                                View recipe
                             </button>
                             <Modal
                                 isOpen={modalIsOpen}
@@ -111,6 +111,7 @@ class ListItem extends Component {
                                                 </div>
                                                 <div
                                                     className='description'
+                                                    role='article'
                                                 >
                                                     Instructions:
                                                     {' '}
@@ -124,7 +125,7 @@ class ListItem extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </li>
         );
     }
 }

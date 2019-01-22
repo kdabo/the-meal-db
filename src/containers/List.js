@@ -63,20 +63,16 @@ class List extends Component {
             return <div>Loading...</div>;
         }
         return (
-            <div className='list-container'>
-                <h2 className='ui container left aligned header'>Meals</h2>
-
-                <div className='ui container'>
+            <div role='main' className='list-container'>
+                <div aria-label='Filter by type of meal' className='ui container'>
+                    <h3>Filter by:</h3>
                     <button type='submit' name='i=chicken%20breast' onClick={this.filterOnClick}>Chicken</button>
                     <button type='submit' name='c=Seafood' onClick={this.filterOnClick}>Seafood</button>
                     <button type='submit' name='a=Canadian' onClick={this.filterOnClick}>Canadian</button>
                 </div>
-
                 <br />
                 <br />
-                <br />
-
-                <ul className='ui four column doubling grid container'>
+                <ul tabIndex='0' aria-label='list of meals' className='ui four column doubling grid container'>
                     {items && items.map(item => (
                         <ListItem
                             image={item.strMealThumb}

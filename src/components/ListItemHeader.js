@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ListItemHeader = (props) => {
     const { title } = props;
     return (
-        <h3 className='header'>{title}</h3>
+        <h3 aria-label={title} className='header'>{title}</h3>
     );
 };
 
