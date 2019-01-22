@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import App from '../App';
 import Header from '../Header';
 import List from '../../containers/List';
@@ -7,7 +7,7 @@ import List from '../../containers/List';
 let wrapped;
 
 beforeEach(() => {
-  wrapped = shallow(<App/>);
+  wrapped = shallow(<App />);
 });
 
 it('shows a header component', () => {

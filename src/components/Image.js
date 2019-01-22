@@ -1,11 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Image = (props) => {
-  return (
-    <div className='ui large image'>
-      <img src={props.image} alt='meal'/>
-    </div>
-  )
+    const { image } = props;
+    return (
+        <div className='ui large image'>
+            <img src={image} alt='meal' />
+        </div>
+    );
+};
+
+Image.propTypes = {
+    image: PropTypes.string.isRequired,
 };
 
 export default Image;
