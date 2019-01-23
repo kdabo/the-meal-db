@@ -7,13 +7,13 @@ import List from '../../containers/List';
 let wrapped;
 
 beforeEach(() => {
-  wrapped = shallow(<App />);
+    wrapped = shallow(<App />);
 });
 
 it('shows a header component', () => {
-  expect(wrapped.find(List).length).toEqual(1);
+    expect(wrapped.find(List).length).toEqual(1);
 });
 
 it('shows a list of items', () => {
-  expect(wrapped.find(Header).length).toEqual(1);
+    expect(wrapped.find(Header).length).toEqual(1);
 });

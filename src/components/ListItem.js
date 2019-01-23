@@ -17,15 +17,8 @@ const customStyles = {
     },
 };
 
-class ListItem extends Component {
-    static propTypes = {
-        image: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        category: PropTypes.string,
-        instructions: PropTypes.string,
-        id: PropTypes.string.isRequired,
-    };
 
+class ListItem extends Component {
     constructor(props) {
         super(props);
 
@@ -39,11 +32,12 @@ class ListItem extends Component {
     }
 
     componentDidMount() {
-        const request = axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${this.props.id}`);
+        const { id } = this.props;
+        const request = axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
         request.then((response) => {
             let item = {};
             if (response && response.data && response.data.meals.length > 0) {
-                item = response.data.meals[0];
+                item = [response.data.meals];
             }
 
             this.setState({
@@ -66,6 +60,7 @@ class ListItem extends Component {
         this.setState({ modalIsOpen: false });
     }
 
+
     render() {
         const { image, title, category, instructions, id } = this.props;
         const { item, modalIsOpen } = this.state;
@@ -78,7 +73,6 @@ class ListItem extends Component {
                         <ListItemHeader title={title} />
                         <div className='ui label teal tag'>
                             { category || item.strCategory }
-                            {' '}
                         </div>
                         <div>
                             <button
@@ -129,5 +123,18 @@ class ListItem extends Component {
         );
     }
 }
+
+ListItem.propTypes = {
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    category: PropTypes.string,
+    instructions: PropTypes.string,
+    id: PropTypes.string.isRequired,
+};
+
+ListItem.defaultProps = {
+    category: '',
+    instructions: '',
+};
 
 export default ListItem;
