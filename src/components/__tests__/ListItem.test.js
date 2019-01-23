@@ -6,7 +6,11 @@ import ListItem from '../ListItem';
 let wrapped;
 
 beforeEach(() => {
-    wrapped = mount(<ListItem />);
+    wrapped = mount(<ListItem
+        title=''
+        image=''
+        id=''
+    />);
 });
 
 afterEach(() => {

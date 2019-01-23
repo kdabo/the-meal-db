@@ -26,7 +26,6 @@ class ListItem extends Component {
             modalIsOpen: false,
             item: {},
         };
-
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
     }
@@ -37,7 +36,8 @@ class ListItem extends Component {
         request.then((response) => {
             let item = {};
             if (response && response.data && response.data.meals.length > 0) {
-                item = [response.data.meals];
+                const anitem = response.data.meals[0];
+                item = anitem;
             }
 
             this.setState({
@@ -74,7 +74,7 @@ class ListItem extends Component {
                         <div className='ui label teal tag'>
                             { category || item.strCategory }
                         </div>
-                        <div>
+                        <div className='margin-top'>
                             <button
                                 type='button'
                                 name={id}
@@ -84,14 +84,16 @@ class ListItem extends Component {
                                 View recipe
                             </button>
                             <Modal
+                                ariaHideApp={false}
                                 isOpen={modalIsOpen}
                                 onRequestClose={this.closeModal}
                                 style={customStyles}
                                 contentLabel='Modal'
                             >
                                 <div className='container ui'>
-                                    <button type='button' onClick={this.closeModal}>close</button>
-                                    <div className='ui grid margin-top'>
+                                    <button className='margin-top ui right floated cancel button' type='button' onClick={this.closeModal}>close</button>
+
+                                    <div className='ui grid margin-top margin-top'>
                                         <div className='right aligned four wide column'>
                                             <Image image={image} />
                                         </div>
